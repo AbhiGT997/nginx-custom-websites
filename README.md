@@ -1,52 +1,56 @@
-# ---Nginx-custom-websites---
+# 🌐 Nginx-Custom-Websites
 
-## Pre-Requisite
+## Pre-Requisites 🛠️
 
-* Docker.io to be installed and set up.
-* All ports & firewall to be opened in case of Cloud VM's. 
-* Git to be installed in the VM's.
-* Nano text-editor & Tree if needed. 
+- Docker.io must be installed and set up.
+- Ensure all necessary ports & firewalls are opened in case of Cloud VMs.
+- Git must be installed on the VMs.
+- Nano text-editor & Tree if needed.
 
-## *Use docker containers to develop and deploy custom web-sites on Localhost/Cloud VM's*
+## 🚀 Use Docker Containers to Develop and Deploy Custom Websites on Localhost/Cloud VMs
 
-## Steps-to be followd:
+### Steps to Follow:
 
-- Clone this Repo to your local directory.
-- Go in to nginx-simple/project-files/projects & select any project that you want to deploy on Nginx.
-- Return to the /nginx-simple folder.
-- Copy the selected project folder to /nginx-simple directory.
-``` cp -r ~/nginx-simple/project-files/projects/<select any you want to deploy> . ``` <-Replace with proper directory->
-- Open up the *Dockerfile* in Nano:
-``` nano Dockerfile ```
-- Replace COPY then the selected folder name, should be replaced in Dockerfile. 
- <Note!: The folder containg Java, css, html, etc should be in /nginx-simple directory or it can be customised in Dockerfile configuration>
-- Run the bellow Docker build & run command.
+1. **Clone the Repository:**
+   - Clone this repository to your local directory:
+     ```sh
+     git clone https://github.com/AbhiGT997/nginx-custom-websites.git
+     ```
+   - Navigate to the cloned repository:
+     ```sh
+     cd nginx-simple
+     ```
 
-## ----Docker Commands required-----
+2. **Select and Copy the Project:**
+   - Navigate to the project files directory and select the project you want to deploy on Nginx:
+     ```sh
+     cd project-files/projects
+     ```
+   - Copy the selected project folder to the main directory:
+     ```sh
+     cp -r ~/nginx-simple/project-files/projects/<project-name> ~/nginx-simple
+     ```
 
-## To build the docker image:
-``` docker build -t nginx:1.0 . ```
+3. **Edit the Dockerfile:**
+   - Open the Dockerfile in Nano:
+     ```sh
+     nano Dockerfile
+     ```
+   - Replace the `<replace-with-folder-name>` placeholder with the name of the selected project folder.
+   - Ensure the folder containing HTML, CSS, JS, etc., files is in the `/nginx-simple` directory or customize the Dockerfile accordingly.
 
-## To run container:
-``` docker run -d -t --name nginx-custom-webcontent -p 7000:80 nginx:1.0 ```
+4. **Build the Docker Image:**
+   - Build the Docker image using the following command:
+     ```sh
+     docker build -t nginx:1.0 .
+     ```
 
-<Note: Can use custom name, Also the port -p can be used to give a custom port number. In the above example 7000=local port & 80=container port>
+5. **Run the Docker Container:**
+   - Run the container with the following command:
+     ```sh
+     docker run -d -t --name nginx-custom-webcontent -p 7000:80 nginx:1.0
+     ```
+   - You can use a custom name and port if needed. In the example above, `7000` is the local port and `80` is the container port.
 
+---
 
-## ----Docker Commands extras-----
-*These are the required commands to Monitior and delete the containers in Docker*
-
-## To check running containers:
-``` docker ps -a ```
-
-## To check the current images genrated:
-``` docker images ```
-
-## To delete all the images
-``` docker image prune -a ```
-
-## To open up the container:
-``` docker exec -it -container id- bash ```
-
-## To stop & delete all the running containers:
-``` docker ps -aq |xargs docker stop |xargs docker rm ```
